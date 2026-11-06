@@ -1,6 +1,6 @@
 # LegacyGuard — Linux Security Patch Manager
 
-A command-line tool in C11 that does, on a small scale, what an Extended
+A command-line tool in C11 that does, on a small scale, what an Endless
 Lifecycle Support team does every day: find which installed packages are
 affected by a known vulnerability, take the upstream fix written for a newer
 release, and work out whether — and how — it can be **backported** to the old
