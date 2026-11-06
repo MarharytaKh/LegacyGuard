@@ -1,0 +1,14 @@
+--- a/ext/standard/string.c
++++ b/ext/standard/string.c
+@@ -62,6 +62,11 @@ char *php_str_pad(const char *input, siz
+         return NULL;
+     }
+ 
++    if (pad_str_len == 0) {
++        php_error_docref(NULL, E_WARNING, "Padding string cannot be empty");
++        return NULL;
++    }
++
+     num_pad_chars = pad_length - input_len;
+     result = emalloc(input_len + num_pad_chars + 1);
+ 

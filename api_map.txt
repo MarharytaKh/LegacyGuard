@@ -1,0 +1,5 @@
+# Known API differences between releases, used by `legacyguard backport`.
+# new_api | old_equivalent | note
+ERR_raise | BUFerr(BUF_F_<FUNCTION>, reason) | ERR_raise() appeared in OpenSSL 3.0; 1.1.1 reports errors through per-library macros with a function code.
+ERR_raise_data | ERR_put_error() + ERR_add_error_data() | 1.1.1 has no single call that records an error with extra data.
+OPENSSL_LH_set_thunks | (none) | Hash-table thunks are 3.x only; keep the 1.1.1 LHASH macros.

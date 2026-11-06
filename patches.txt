@@ -1,0 +1,5 @@
+# patch_id | cve_id | package | upstream_version | patch_file | applied
+PATCH-0001 | CVE-TEST-0003 | php | 7.2.34 | php-7.2-str-pad-empty-padding.patch | 0
+PATCH-0002 | CVE-TEST-0001 | openssl | 3.0.13 | openssl-3.0-buf-mem-grow-overflow.patch | 0
+PATCH-0002-BP | CVE-TEST-0001 | openssl | 1.1.1k | openssl-1.1.1-buf-mem-grow-overflow-backport.patch | 0
+PATCH-0003 | CVE-TEST-0004 | nginx | 1.21.0 | nginx-1.21-resolver-label-length.patch | 0

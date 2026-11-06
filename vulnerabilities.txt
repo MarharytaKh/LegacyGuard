@@ -1,0 +1,12 @@
+# Training vulnerability database. IDs use the CVE-TEST- prefix on purpose:
+# these entries describe the mock sources in data/sources, not real CVEs.
+#
+# cve_id | package | introduced_in | fixed_in | severity | description
+# Affected when introduced_in <= installed < fixed_in ("*" = all older versions).
+CVE-TEST-0001 | openssl | 1.0.2 | 1.1.1w | CRITICAL | Integer overflow in BUF_MEM_grow() size calculation leads to heap buffer overflow
+CVE-TEST-0002 | openssl | 3.0.0 | 3.0.13 | HIGH | Use-after-free in provider teardown (3.x only)
+CVE-TEST-0003 | php | 7.0.0 | 7.2.34 | HIGH | Division by zero in php_str_pad() with an empty padding string
+CVE-TEST-0004 | nginx | 1.1.4 | 1.21.0 | MEDIUM | Missing label length validation in resolver name decoding
+CVE-TEST-0005 | curl | 7.50.0 | 7.79.0 | MEDIUM | Credential leak on cross-protocol redirect
+CVE-TEST-0006 | nginx | 1.19.0 | 1.21.0 | LOW | Off-by-one in access log buffer flush
+CVE-TEST-0007 | curl | * | 7.20.0 | HIGH | Heap overflow in legacy TFTP filename handling

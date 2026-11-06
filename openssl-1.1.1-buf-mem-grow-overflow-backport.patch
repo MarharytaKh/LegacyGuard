@@ -1,0 +1,24 @@
+--- a/crypto/buffer/buffer.c
++++ b/crypto/buffer/buffer.c
+@@ -83,6 +83,10 @@ size_t BUF_MEM_grow(BUF_MEM *str, size_t
+         str->length = len;
+         return len;
+     }
++    if (len > LIMIT_BEFORE_EXPANSION) {
++        BUFerr(BUF_F_BUF_MEM_GROW, ERR_R_PASSED_INVALID_ARGUMENT);
++        return 0;
++    }
+     n = (len + 3) / 3 * 4;
+     if ((str->flags & BUF_MEM_FLAG_SECURE))
+         ret = sec_alloc_realloc(str, n);
+@@ -116,6 +120,10 @@ size_t BUF_MEM_grow_clean(BUF_MEM *str,
+         str->length = len;
+         return len;
+     }
++    if (len > LIMIT_BEFORE_EXPANSION) {
++        BUFerr(BUF_F_BUF_MEM_GROW_CLEAN, ERR_R_PASSED_INVALID_ARGUMENT);
++        return 0;
++    }
+     n = (len + 3) / 3 * 4;
+     if ((str->flags & BUF_MEM_FLAG_SECURE))
+         ret = sec_alloc_realloc(str, n);

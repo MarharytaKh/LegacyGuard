@@ -1,0 +1,26 @@
+--- a/src/core/ngx_resolver.c
++++ b/src/core/ngx_resolver.c
+@@ -24,6 +24,11 @@ ngx_resolver_copy_name(ngx_resolver_t *r
+         n = *p++;
+ 
+         if (n == 0) {
++            if (len > 255) {
++                err = "name is too long";
++                goto invalid;
++            }
++
+             *out_len = len;
+             return NGX_OK;
+         }
+@@ -33,6 +38,11 @@ ngx_resolver_copy_name(ngx_resolver_t *r
+             p = &buf[n];
+ 
+         } else {
++            if (ngx_resolver_check_label(p, n, last) != NGX_OK) {
++                err = "invalid label length";
++                goto invalid;
++            }
++
+             len += 1 + n;
+             p = &p[n];
+         }

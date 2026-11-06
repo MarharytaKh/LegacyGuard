@@ -1,0 +1,5 @@
+# name | version | distribution
+openssl | 1.1.1k | CentOS 7
+curl | 7.29.0 | CentOS 7
+php | 7.2.0 | Ubuntu 18.04
+nginx | 1.18.0 | Debian 11

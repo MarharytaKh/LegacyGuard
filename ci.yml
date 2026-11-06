@@ -1,0 +1,32 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        compiler: [gcc, clang]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build (warnings are errors)
+        run: make CC=${{ matrix.compiler }} CFLAGS="-O2 -g -Werror"
+      - name: Unit tests
+        run: make CC=${{ matrix.compiler }} test
+      - name: Demo
+        run: make demo
+
+  sanitizers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: AddressSanitizer + UBSan
+        run: make asan && ./scripts/demo.sh
+
+  valgrind:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y valgrind
+      - run: make valgrind
